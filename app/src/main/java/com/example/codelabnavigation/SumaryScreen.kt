@@ -1,0 +1,36 @@
+package com.example.codelabnavigation
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun SumaryScreen(modifier: Modifier, orderUiState: OrderUiState, onSendButton: () -> Unit){
+    Column(){
+        Text(text = "Quantity")
+        Text(text = "${orderUiState.quantity}")
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+        Text(text = "Flavor")
+        Text(text = orderUiState.flavor)
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+        Text(text = "Pick up dete")
+        Text(text = orderUiState.date)
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+        Text(text = orderUiState.price)
+        Button(
+            modifier = Modifier.padding(vertical = 4.dp),
+            onClick = {
+             val summary = "Q: ${orderUiState.quantity}, F: ${orderUiState.flavor}, P: ${orderUiState.price}"
+            }
+        ) {
+            Text(text = "Send to another app")
+        }
+    }
+}
